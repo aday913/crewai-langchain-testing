@@ -79,12 +79,12 @@ openai_crew = Crew(
     agents=[openai_agent], tasks=[openai_task], verbose=2, process=Process.sequential
 )
 
+print("##################################")
 print("USING GEMINI AGENT")
 gem_result = gem_crew.kickoff()
-print("##################################")
 print(gem_result)
 
+print("##################################")
 print("USING OPENAI AGENT")
 openai_result = openai_crew.kickoff()
-print("##################################")
 print(openai_result)
