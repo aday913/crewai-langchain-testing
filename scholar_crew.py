@@ -39,7 +39,7 @@ openai_api = ChatOpenAI(
 #     description="Search Google Scholar for academic research papers.",
 #     func=search.run,
 # )
-print(os.getenv("SERPER_API_KEY"))
+
 scholar_tool = SerperDevTool(search_url="https://google.serper.dev/scholar")
 
 def get_input() -> str:
