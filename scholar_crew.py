@@ -1,6 +1,7 @@
 import os
 
 from crewai import Agent, Task, Crew, Process
+from crewai_tools import SerperDevTool
 from dotenv import load_dotenv
 from langchain.agents import Tool
 from langchain_community.tools.google_scholar.tool import GoogleScholarQueryRun
@@ -10,6 +11,8 @@ from langchain_openai import ChatOpenAI
 
 # Load the environment variables
 load_dotenv()
+os.environ["OPENAI_API_KEY"] = os.getenv("OPENAI_API_KEY")
+os.environ["SERPER_API_KEY"] = os.getenv("SERPER_API_KEY")
 
 # Initialize Gemini API
 google_api = ChatGoogleGenerativeAI(
@@ -25,17 +28,19 @@ openai_api = ChatOpenAI(
     openai_api_key=os.getenv("OPENAI_API_KEY"),
 )
 
-search = GoogleScholarQueryRun(
-    api_wrapper=GoogleScholarAPIWrapper(serp_api_key=os.getenv("SERPAPI_KEY"))
-)
 
 # Initialize Google Scholar API tool
-scholar_tool = Tool(
-    name="Google Scholar Search Tool",
-    description="Search Google Scholar for academic research papers.",
-    func=search.run,
-)
-
+# search = GoogleScholarQueryRun(
+#     api_wrapper=GoogleScholarAPIWrapper(serp_api_key=os.getenv("SERPAPI_KEY"))
+# )
+#
+# scholar_tool = Tool(
+#     name="Google Scholar Search Tool",
+#     description="Search Google Scholar for academic research papers.",
+#     func=search.run,
+# )
+print(os.getenv("SERPER_API_KEY"))
+scholar_tool = SerperDevTool(search_url="https://google.serper.dev/scholar")
 
 def get_input() -> str:
     print("Insert your text. Enter 'q' or press Ctrl-D (or Ctrl-Z on Windows) to end.")
