@@ -8,3 +8,6 @@ basic_example.py:
 * Initialize both OpenAI- and Google-based llm models
 * Create a simple tool to add two numbers together given user input
 * Create a crew to add the two numbers together and return results
+
+scholar_crew.py:
+* Set up tools from either crewAI (SerperDevTool) or langchain for google scholar search
