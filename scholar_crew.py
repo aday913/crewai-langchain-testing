@@ -42,6 +42,7 @@ openai_api = ChatOpenAI(
 
 scholar_tool = SerperDevTool(search_url="https://google.serper.dev/scholar")
 
+
 def get_input() -> str:
     print("Insert your text. Enter 'q' or press Ctrl-D (or Ctrl-Z on Windows) to end.")
     contents = []
